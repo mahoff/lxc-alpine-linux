@@ -26,7 +26,7 @@ group=${group:-www}
 depend() {
   need net
   use dns logger netmount
-  provide webdav ssb gossip
+  # provide webdav ssb gossip
 }
 
 start_pre() {
@@ -87,7 +87,7 @@ configtest() {
   checkpath -q -d -m 0755 -o ${user}:${group} /var/tmp/nginx
   checkpath -q -d -m 0755 -o ${user}:${group} /var/tmp/nginx/{client,proxy,fastcgi,scgi,uwsgi}
 
-  ebegginx "Checking nginx' configuration"
+  ebegin "Checking nginx' configuration"
 
   ${command} -c ${nginx_config} -t -q
 
